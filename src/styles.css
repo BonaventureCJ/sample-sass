@@ -13,11 +13,12 @@
 
 .performance {
   overflow: auto;
+  max-width: 80vw;
 }
 .performance .performance-content {
   width: 700px;
-  max-width: 80vw;
-  height: 80vh;
+  max-width: 70vw;
+  height: 70vh;
   margin: 2em auto 1em;
   font-family: Arial, sans-serif;
 }
@@ -28,12 +29,12 @@
   justify-content: space-around;
   list-style: none;
   width: 700px;
-  max-width: 80vw;
-  height: 80vh;
+  max-width: 70vw;
+  height: 70vh;
 }
 .performance .performance-content ul li {
-  height: 5em;
-  width: 29em;
+  height: 10vh;
+  width: 60vw;
   margin-bottom: 0.13em;
   border-radius: 0.2em;
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);

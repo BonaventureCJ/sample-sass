@@ -52,13 +52,14 @@ $font-size-3: 0.9rem;
    
     overflow: auto;
     @extend %horizontal-center;
+    max-width: 80vw;
     
 
     #{&}-content {
         @extend %horizontal-center;
         width: 700px;
-        max-width: 80vw;
-        height: 80vh;
+        max-width: 70vw;
+        height: 70vh;
         margin: 2em auto 1em;
         font-family: $font-family;
         
@@ -70,12 +71,12 @@ $font-size-3: 0.9rem;
             justify-content: space-around;
             list-style: none;
             width: 700px;
-            max-width: 80vw;
-            height: 80vh;
+            max-width: 70vw;
+            height: 70vh;
             li {
                 @extend %horizontal-center;
-                height: 5em;
-                width: 29em;
+                height: 10vh;
+                width: 60vw;
                 margin-bottom: 0.13em;
                 border-radius: $border-radius-1;
                 box-shadow: $box-shadow;
