@@ -19,9 +19,9 @@ $background-color: rgba(0, 0, 0, 0.15);
 $font-family: Arial, sans-serif;
 $border-radius-1: 0.2em;
 $border-radius-2: 1em;
-$font-size-1: 20px;
-$font-size-2: 20px;
-$font-size-3: 20px;
+$font-size-1: 1empx;
+$font-size-2: 1.1em;
+$font-size-3: 1.3em;
 
 //EXTEND/INHERITANCE
 %horizontal-center {
@@ -30,7 +30,7 @@ $font-size-3: 20px;
 
 //MIXINS
 @mixin flex-container($direction: center) {
-    display: fleX;
+    display: flex;
     justify-content: $direction;
     align-items: center;
 }
@@ -52,7 +52,7 @@ $font-size-3: 20px;
    
     overflow: auto;
     @extend %horizontal-center;
-    max-width: 90%;
+    max-width: 100%;
     max-height: 85%;
     
 
@@ -75,7 +75,7 @@ $font-size-3: 20px;
             li {
                 @extend %horizontal-center;
                 height: 18%;
-                width: 90%;
+                width: 80%;
                 margin-bottom: 0.13em;
                 border-radius: $border-radius-1;
                 box-shadow: $box-shadow;
