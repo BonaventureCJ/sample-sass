@@ -1,4 +1,4 @@
-/* || RESET */
+/* || ##RESETS */
 
 *,
 *::after,
@@ -9,27 +9,54 @@
 }
 
 
-//VARIABLES
-$box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
-$blue: #2782ad;
-$green: #27ac96;
-$white: #fff;
-$background-image: linear-gradient(90deg, $blue, $green);
-$background-color: rgba(0, 0, 0, 0.15);
-$font-family: Arial, sans-serif;
-$border-radius-1: 0.2em;
-$border-radius-2: 1em;
-$font-size-1: 1em;
-$font-size-2: 1em;
-$font-size-3: 1.1em;
 
 
-//EXTEND/INHERITANCE
+
+/* ##VARIABLES */
+/* #FONTS */
+$primary-font: Arial, sans-serif;
+$font-size-sm: 1em;
+$font-size-md: 1.1em;
+$font-size-lg: 1.5em;
+
+
+/* #COLORS */
+/* TEXT COLOR */
+$primary-text-color: #fff;
+
+/* BACKGROUND COLORS */
+$primary-bg-color: #2782ad;
+$secondary-bg-color: #27ac96;
+$tertiary-bg-color: rgba(0, 0, 0, 0.15);
+$primary-hover-color: rgba(0, 0, 0, 0.18);
+
+/* #BACKGROUND-IMAGE */
+$primary-bg-image: linear-gradient(90deg, $primary-bg-color, $secondary-bg-color);
+$primary-hover-image: linear-gradient(90deg, rgba($primary-bg-color, 0.7), rgba($secondary-bg-color, 0.7));
+
+
+/* #BOX-SHADOW */
+$primary-box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
+
+
+/* #BORDER RADIUS */
+$border-radius-sm: 0.2em;
+$border-radius-md: 1em;
+
+
+
+
+
+/* ##EXTEND/INHERITANCE */
 %horizontal-center {
-    margin:auto;
+    margin: auto;
 }
 
-//MIXINS
+
+
+
+
+/* ##MIXINS */
 @mixin flex-container($direction: center) {
     display: flex;
     justify-content: $direction;
@@ -44,120 +71,137 @@ $font-size-3: 1.1em;
     content: $content;
 }
 
-@mixin font-definitions($font-size: $font-size-1, $font-weight: bolder, $opacity: 0.4) {
+@mixin font-definitions($font-size: $font-size-sm, $font-weight: bolder, $opacity: 0.4) {
     font-size: $font-size;
     font-weight: $font-weight;
     opacity: $opacity;
 }
+
+
+
+
+/* ##MAIN */
 .performance {
-   
+
     overflow: auto;
     @extend %horizontal-center;
     width: 576px;
     height: 600px;
-    
+}
 
-    #{&}-content {
-        @extend %horizontal-center;
-        margin: 2em auto 1em;
-        font-family: $font-family;
-        
+.performance-content {
+    @extend %horizontal-center;
+    margin: 2em auto 1em;
+    font-family: $primary-font;
 
-        ul {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: space-around;
-            list-style: none;
+    ul {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-around;
+        list-style: none;
+
+        li {
+            @extend %horizontal-center;
+            height: 90px;
+            width: 450px;
+            margin-bottom: 0.13em;
+            border-radius: $border-radius-sm;
+            box-shadow: $primary-box-shadow;
+            position: relative;
             
-            li {
-                @extend %horizontal-center;
-                height: 90px;
-                width: 450px;
-                margin-bottom: 0.13em;
-                border-radius: $border-radius-1;
-                box-shadow: $box-shadow;
-                position: relative;
+            &:hover {
+                background-color: $primary-hover-color;
+               cursor: pointer;
+            }
+
+            &:before {
+                @include flex-container;
+                position: absolute;
+                left: -3.5em;
+                width: 2em;
+                height: 2em;
+                background-color: $tertiary-bg-color;
+                border-radius: $border-radius-md;
+                color: $primary-text-color;
+                font-size: $font-size-md;
+            }
+
+            &:first-child {
+                @include flex-container($direction: left);
+                @include order($order: 2); //Modifying order of display for child-1.
 
                 &:before {
-                    @include flex-container;
-                    position: absolute;
-                    left: -3.5em;
-                    width: 2em;
-                    height: 2em;
-                    background-color: $background-color;
-                    border-radius: $border-radius-2;
-                    color: $white;
-                    font-size: $font-size-2;
+                    @include content($content: "2"); //Specifying content for child-1.
+                }
+            }
+
+            &:nth-child(2) {
+                @include flex-container($direction: left);
+                @include order($order: 1); //Modifying order of display for child-2.
+
+                &:before {
+                    @include content($content: "1"); //Specifying content for child-2.
+                }
+            }
+
+            &:nth-child(3) {
+                @include flex-container($direction: left);
+                @include order($order: 3);
+
+                &:before {
+                    @include content($content: "3");
+                }
+            }
+
+            &:nth-child(4) {
+                @include flex-container($direction: left);
+                @include order($order: 4);
+
+                &:before {
+                    @include content($content: "4");
+                }
+            }
+
+            &:last-child {
+                @include flex-container;
+                @include order($order: 5);
+                color: $primary-text-color;
+                background-image: $primary-bg-image;
+                font-size: $font-size-sm;
+
+                &:hover {
+                    background-image: $primary-hover-image;
                 }
 
-                &:first-child {
-                    @include flex-container($direction: left);
-                    @include order($order: 2);//Modifying order of display for child-1.
 
-                    &:before {
-                        @include content($content: "2"); //Specifying content for child-1.
-                    }
+                &:before {
+                    @include content($content: "="); //Specifying content for last child.
+                    border-radius: $border-radius-sm;
+                    background-image: $primary-bg-image;
+                    font-size: $font-size-md;
+                }
+            }
+
+            dl {
+                margin-left: 1.5em;
+
+                dt {
+                    @include font-definitions;
+                    text-transform: uppercase;
                 }
 
-                &:nth-child(2) {
-                    @include flex-container($direction: left);
-                    @include order($order: 1); //Modifying order of display for child-2.
-
-                    &:before {
-                        @include content($content: "1"); //Specifying content for child-2.
-                    }
-                }
-
-                &:nth-child(3) {
-                    @include flex-container($direction: left);
-                    @include order($order: 3);
-
-                    &:before {
-                        @include content($content: "3");
-                    }
-                }
-
-                &:nth-child(4) {
-                    @include flex-container($direction: left);
-                    @include order($order: 4);
-
-                    &:before {
-                        @include content($content: "4");
-                    }
-                }
-
-                &:last-child {
-                    @include flex-container;
-                    @include order($order: 5);
-                    color: $white;
-                    background-image: $background-image;
-                    font-size: $font-size-3;
-
-
-                    &:before {
-                        @include content($content: "="); //Specifying content for last child.
-                        border-radius: $border-radius-1;
-                        background-image: $background-image;
-                        font-size: $font-size-2;
-                    }
-                }
-
-                dl {
-                    margin-left: 1.5em;
-
-                    dt {
-                        @include font-definitions;
-                        text-transform: uppercase;
-                    }
-
-                    dd {
-                        @include font-definitions($font-size: $font-size-2, $font-weight: 700, $opacity: 0.5);
-                        margin-top: 0.5em;
-                        margin-left: auto;
-                    }
+                dd {
+                    @include font-definitions($font-size: $font-size-md, $font-weight: 700, $opacity: 0.5);
+                    margin-top: 0.5em;
+                    margin-left: auto;
                 }
             }
         }
+
+
+
+
     }
+
 }
