@@ -13,8 +13,8 @@
 
 .performance {
   overflow: auto;
-  max-width: 100%;
-  max-height: 85%;
+  max-width: 576px;
+  max-height: 600px;
 }
 .performance .performance-content {
   width: 95%;
@@ -50,7 +50,7 @@
   background-color: rgba(0, 0, 0, 0.15);
   border-radius: 1em;
   color: #fff;
-  font-size: 1.1em;
+  font-size: 1em;
 }
 .performance .performance-content ul li:first-child {
   display: flex;
@@ -95,24 +95,25 @@
   order: 5;
   color: #fff;
   background-image: linear-gradient(90deg, #2782ad, #27ac96);
-  font-size: 1.3em;
+  font-size: 1.1em;
 }
 .performance .performance-content ul li:last-child:before {
   content: "=";
   border-radius: 0.2em;
   background-image: linear-gradient(90deg, #2782ad, #27ac96);
+  font-size: 1em;
 }
 .performance .performance-content ul li dl {
   margin-left: 1.5em;
 }
 .performance .performance-content ul li dl dt {
-  font-size: 1.1em;
+  font-size: 1em;
   font-weight: bolder;
   opacity: 0.4;
   text-transform: uppercase;
 }
 .performance .performance-content ul li dl dd {
-  font-size: 1.1em;
+  font-size: 1em;
   font-weight: 700;
   opacity: 0.5;
   margin-top: 0.5em;
